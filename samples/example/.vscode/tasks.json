@@ -6,7 +6,7 @@
         {
             "label": "Run rooibosC",
             "type": "shell",
-            "command": "rooibosC -c rooibosrc.json",
+            "command": "rooibosC -c source/tests/rooibos/rooibosrc.json",
             "presentation": {
                 "echo": false,
                 "reveal": "silent",
