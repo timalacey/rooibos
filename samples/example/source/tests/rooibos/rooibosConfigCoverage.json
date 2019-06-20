@@ -1,0 +1,21 @@
+{
+    "projectPath": "build",
+    "testsFilePattern": [
+        "**/tests/**/*.brs",
+        "**/tests/**/*.xml",
+        "!**/rooibosDist.brs",
+        "!**/rooibosFunctionMap.brs",
+        "!**/TestsScene.brs"
+    ],
+    "outputPath": "source/tests/rooibos/",
+    "isRecordingCodeCoverage": true,
+    "sourceFilePattern": [
+        "**/*.brs",
+        "**/*.xml",
+        "!**/tests/**/*.*",
+        "!**/tests",
+        "!**/rooibosDist.brs",
+        "!**/rooibosFunctionMap.brs",
+        "!**/TestsScene.brs"
+    ]
+}

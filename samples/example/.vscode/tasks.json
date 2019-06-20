@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Run rooibosC",
+            "label": "createBuildFolder",
             "type": "shell",
-            "command": "rooibosC -c source/tests/rooibos/rooibosrc.json",
+            "command": "echo TODO and hello from ${PWD}",
             "presentation": {
                 "echo": false,
                 "reveal": "silent",
@@ -14,6 +14,34 @@
                 "showReuseMessage": false,
                 "clear": false
             }
+        },
+        {
+            "label": "codeCoverage",
+            "type": "shell",
+            "command": "rooibosC -c source/tests/rooibos/rooibosConfigCoverage.json",
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
+        },
+        {
+            "label": "unitTest",
+            "type": "shell",
+            "command": "rooibosC -c source/tests/rooibos/rooibosConfig.json",
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": false
+            }
+        },
+        {
+            "label": "measureCodeCoverage",
+            "dependsOn": ["createBuildFolder", "codeCoverage"]
         }
     ]
 }

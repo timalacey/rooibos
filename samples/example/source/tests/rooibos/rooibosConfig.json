@@ -1,0 +1,11 @@
+{
+    "projectPath": ".",
+    "testsFilePattern": [
+        "**/tests/**/*.brs",
+        "**/tests/**/*.xml",
+        "!**/rooibosDist.brs",
+        "!**/rooibosFunctionMap.brs",
+        "!**/TestsScene.brs"
+    ],
+    "outputPath": "source/tests/rooibos/"
+}
