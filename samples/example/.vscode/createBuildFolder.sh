@@ -28,3 +28,8 @@ if [ $1 ] && [ $1 = true ]; then
     # cp -R images build
     # cp -R theme build
 fi
+
+echo ""
+echo "rooibosC version:"; rooibosC --version
+echo "rooibosDist.brs version:"; sed '3!d' source/tests/rooibos/rooibosDist.brs
+echo ""
