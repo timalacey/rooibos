@@ -1,26 +1,30 @@
-# clear /build
-if [ -d "build" ] 
-then
+# clear terminal window
+clear
+
+# remove /build
+if [ -d "build" ]; then
     echo 'removing /build'
     rm -r build
 else
     echo "/build does not exist"
 fi
 
-# construct /build
-# should match launch.json->files object
-# "files": [
-#     "manifest",
-#     "source/**/*.*",
-#     "components/**/*.*",
-#     "images/**/*.*",
-#     "theme/**/*.*"
-# ]
+# if codeCoverage is being run
+if [ $1 ] && [ $1 = true ]; then
+    echo 'constructing /build'
 
-echo 'constructing /build'
-mkdir -p -v build
-cp -R manifest build
-cp -R source build
-cp -R components build
-# cp -R images build
-# cp -R theme build
+    # should match launch.json->files object
+    # "files": [
+    #     "manifest",
+    #     "source/**/*.*",
+    #     "components/**/*.*",
+    #     "images/**/*.*",
+    #     "theme/**/*.*"
+    # ]
+    mkdir -p -v build
+    cp -R manifest build
+    cp -R source build
+    cp -R components build
+    # cp -R images build
+    # cp -R theme build
+fi

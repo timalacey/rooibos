@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "createBuildFolder",
+            "label": "unitTest",
             "type": "shell",
-            "command": "sh .vscode/createBuildFolder.sh",
+            "command": "sh .vscode/createBuildFolder.sh false;rooibosC -c source/tests/rooibos/rooibosConfig.json",
             "presentation": {
                 "echo": false,
                 "reveal": "silent",
@@ -18,20 +18,7 @@
         {
             "label": "codeCoverage",
             "type": "shell",
-            "dependsOn":["createBuildFolder"],
-            "command": "rooibosC -c source/tests/rooibos/rooibosConfigCoverage.json",
-            "presentation": {
-                "echo": false,
-                "reveal": "silent",
-                "panel": "shared",
-                "showReuseMessage": false,
-                "clear": false
-            }
-        },
-        {
-            "label": "unitTest",
-            "type": "shell",
-            "command": "rooibosC -c source/tests/rooibos/rooibosConfig.json",
+            "command": "sh .vscode/createBuildFolder.sh true; rooibosC -c source/tests/rooibos/rooibosConfigCoverage.json",
             "presentation": {
                 "echo": false,
                 "reveal": "silent",
