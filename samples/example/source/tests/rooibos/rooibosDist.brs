@@ -2020,6 +2020,8 @@ sub RBS_TR_Run()
   m.logger.PrintStatistic(totalStatObj)
   if RBS_CMN_IsFunction(RBS_ReportCodeCoverage)
     RBS_ReportCodeCoverage()
+  else
+    ? "WARN CodeCoverage cannot execute, RBS_ReportCodeCoverage is not a function"
   end if
   RBS_TR_SendHomeKeypress()
 end sub
