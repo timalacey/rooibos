@@ -1,10 +1,10 @@
 '/**
 ' * rooibos - simple, flexible, fun brihhtscript test framework for roku scenegraph apps
-' * @version v3.0.1-beta
+' * @version v3.0.3
 ' * @link https://github.com/georgejecook/rooibos#readme
 ' * @license MIT
 ' */
-function Rooibos__Init(preTestSetup = invalid,  testUtilsDecoratorMethodName = invalid, testSceneName = invalid, nodeContext = invalid) as void
+function Rooibos__Init(preTestSetup = invalid, testUtilsDecoratorMethodName = invalid, testSceneName = invalid, nodeContext = invalid) as void
   args = {}
   if createObject("roAPPInfo").IsDev() <> true then
     ? " not running in dev mode! - rooibos tests only support sideloaded builds - aborting"
@@ -23,7 +23,7 @@ function Rooibos__Init(preTestSetup = invalid,  testUtilsDecoratorMethodName = i
   scene.id = "ROOT"
   screen.show()
   m.global = screen.getGlobalNode()
-  m.global.addFields({"testsScene": scene})
+  m.global.addFields({ "testsScene": scene })
   if (preTestSetup <> invalid)
     preTestSetup(screen)
   end if
@@ -49,83 +49,83 @@ function Rooibos__Init(preTestSetup = invalid,  testUtilsDecoratorMethodName = i
 end function
 function BaseTestSuite() as object
   this = {}
-  this.Name               = "BaseTestSuite"
+  this.Name = "BaseTestSuite"
   this.invalidValue = "#ROIBOS#INVALID_VALUE" ' special value used in mock arguments
   this.ignoreValue = "#ROIBOS#IGNORE_VALUE" ' special value used in mock arguments
   this.allowNonExistingMethodsOnMocks = true
   this.isAutoAssertingMocks = true
   this.TestCases = []
-  this.AddTest            = RBS_BTS_AddTest
-  this.CreateTest           = RBS_BTS_CreateTest
+  this.AddTest = RBS_BTS_AddTest
+  this.CreateTest = RBS_BTS_CreateTest
   this.GetLegacyCompatibleReturnValue = RBS_BTS_GetLegacyCompatibleReturnValue
-  this.Fail               = RBS_BTS_Fail
-  this.AssertFalse          = RBS_BTS_AssertFalse
-  this.AssertTrue           = RBS_BTS_AssertTrue
-  this.AssertEqual          = RBS_BTS_AssertEqual
-  this.AssertLike           = RBS_BTS_AssertLike
-  this.AssertNotEqual         = RBS_BTS_AssertNotEqual
-  this.AssertInvalid          = RBS_BTS_AssertInvalid
-  this.AssertNotInvalid         = RBS_BTS_AssertNotInvalid
-  this.AssertAAHasKey         = RBS_BTS_AssertAAHasKey
-  this.AssertAANotHasKey        = RBS_BTS_AssertAANotHasKey
-  this.AssertAAHasKeys        = RBS_BTS_AssertAAHasKeys
-  this.AssertAANotHasKeys       = RBS_BTS_AssertAANotHasKeys
-  this.AssertArrayContains      = RBS_BTS_AssertArrayContains
-  this.AssertArrayNotContains     = RBS_BTS_AssertArrayNotContains
-  this.AssertArrayContainsSubset    = RBS_BTS_AssertArrayContainsSubset
-  this.AssertArrayContainsAAs     = RBS_BTS_AssertArrayContainsAAs
-  this.AssertArrayNotContainsSubset   = RBS_BTS_AssertArrayNotContainsSubset
-  this.AssertArrayCount         = RBS_BTS_AssertArrayCount
-  this.AssertArrayNotCount      = RBS_BTS_AssertArrayNotCount
-  this.AssertEmpty          = RBS_BTS_AssertEmpty
-  this.AssertNotEmpty         = RBS_BTS_AssertNotEmpty
-  this.AssertArrayContainsOnlyValuesOfType    = RBS_BTS_AssertArrayContainsOnlyValuesOfType
-  this.AssertType           = RBS_BTS_AssertType
-  this.AssertSubType        = RBS_BTS_AssertSubType
-  this.AssertNodeCount         = RBS_BTS_AssertNodeCount
-  this.AssertNodeNotCount      = RBS_BTS_AssertNodeNotCount
-  this.AssertNodeEmpty        = RBS_BTS_AssertNodeEmpty
-  this.AssertNodeNotEmpty      = RBS_BTS_AssertNodenotEmpty
-  this.AssertNodeContains      = RBS_BTS_AssertNodeContains
-  this.AssertNodeNotContains     = RBS_BTS_AssertNodeNotContains
-  this.AssertNodeContainsFields    = RBS_BTS_AssertNodeContainsFields
-  this.AssertNodeNotContainsFields   = RBS_BTS_AssertNodeNotContainsFields
-  this.AssertAAContainsSubset   = RBS_BTS_AssertAAContainsSubset
-  this.EqValues             = RBS_BTS_EqValues
-  this.EqAssocArrays          = RBS_BTS_EqAssocArray
-  this.EqArray             = RBS_BTS_EqArray
-  this.Stub       = RBS_BTS_Stub
-  this.Mock       = RBS_BTS_Mock
-  this.AssertMocks    = RBS_BTS_AssertMocks
-  this.CreateFake     = RBS_BTS_CreateFake
-  this.CombineFakes     = RBS_BTS_CombineFakes
-  this.MockFail     = RBS_BTS_MockFail
-  this.CleanMocks     = RBS_BTS_CleanMocks
-  this.CleanStubs     = RBS_BTS_CleanStubs
-  this.ExpectOnce         = RBS_BTS_ExpectOnce
-  this.ExpectNone         = RBS_BTS_ExpectNone
-  this.Expect             = RBS_BTS_Expect
-  this.ExpectOnceOrNone   = RBS_BTS_ExpectOnceOrNone
-  this.MockCallback0     = RBS_BTS_MockCallback0
-  this.MockCallback1     = RBS_BTS_MockCallback1
-  this.MockCallback2     = RBS_BTS_MockCallback2
-  this.MockCallback3     = RBS_BTS_MockCallback3
-  this.MockCallback4     = RBS_BTS_MockCallback4
-  this.MockCallback5     = RBS_BTS_MockCallback5
-  this.StubCallback0     = RBS_BTS_StubCallback0
-  this.StubCallback1     = RBS_BTS_StubCallback1
-  this.StubCallback2     = RBS_BTS_StubCallback2
-  this.StubCallback3     = RBS_BTS_StubCallback3
-  this.StubCallback4     = RBS_BTS_StubCallback4
-  this.StubCallback5     = RBS_BTS_StubCallback5
+  this.Fail = RBS_BTS_Fail
+  this.AssertFalse = RBS_BTS_AssertFalse
+  this.AssertTrue = RBS_BTS_AssertTrue
+  this.AssertEqual = RBS_BTS_AssertEqual
+  this.AssertLike = RBS_BTS_AssertLike
+  this.AssertNotEqual = RBS_BTS_AssertNotEqual
+  this.AssertInvalid = RBS_BTS_AssertInvalid
+  this.AssertNotInvalid = RBS_BTS_AssertNotInvalid
+  this.AssertAAHasKey = RBS_BTS_AssertAAHasKey
+  this.AssertAANotHasKey = RBS_BTS_AssertAANotHasKey
+  this.AssertAAHasKeys = RBS_BTS_AssertAAHasKeys
+  this.AssertAANotHasKeys = RBS_BTS_AssertAANotHasKeys
+  this.AssertArrayContains = RBS_BTS_AssertArrayContains
+  this.AssertArrayNotContains = RBS_BTS_AssertArrayNotContains
+  this.AssertArrayContainsSubset = RBS_BTS_AssertArrayContainsSubset
+  this.AssertArrayContainsAAs = RBS_BTS_AssertArrayContainsAAs
+  this.AssertArrayNotContainsSubset = RBS_BTS_AssertArrayNotContainsSubset
+  this.AssertArrayCount = RBS_BTS_AssertArrayCount
+  this.AssertArrayNotCount = RBS_BTS_AssertArrayNotCount
+  this.AssertEmpty = RBS_BTS_AssertEmpty
+  this.AssertNotEmpty = RBS_BTS_AssertNotEmpty
+  this.AssertArrayContainsOnlyValuesOfType = RBS_BTS_AssertArrayContainsOnlyValuesOfType
+  this.AssertType = RBS_BTS_AssertType
+  this.AssertSubType = RBS_BTS_AssertSubType
+  this.AssertNodeCount = RBS_BTS_AssertNodeCount
+  this.AssertNodeNotCount = RBS_BTS_AssertNodeNotCount
+  this.AssertNodeEmpty = RBS_BTS_AssertNodeEmpty
+  this.AssertNodeNotEmpty = RBS_BTS_AssertNodenotEmpty
+  this.AssertNodeContains = RBS_BTS_AssertNodeContains
+  this.AssertNodeNotContains = RBS_BTS_AssertNodeNotContains
+  this.AssertNodeContainsFields = RBS_BTS_AssertNodeContainsFields
+  this.AssertNodeNotContainsFields = RBS_BTS_AssertNodeNotContainsFields
+  this.AssertAAContainsSubset = RBS_BTS_AssertAAContainsSubset
+  this.EqValues = RBS_BTS_EqValues
+  this.EqAssocArrays = RBS_BTS_EqAssocArray
+  this.EqArray = RBS_BTS_EqArray
+  this.Stub = RBS_BTS_Stub
+  this.Mock = RBS_BTS_Mock
+  this.AssertMocks = RBS_BTS_AssertMocks
+  this.CreateFake = RBS_BTS_CreateFake
+  this.CombineFakes = RBS_BTS_CombineFakes
+  this.MockFail = RBS_BTS_MockFail
+  this.CleanMocks = RBS_BTS_CleanMocks
+  this.CleanStubs = RBS_BTS_CleanStubs
+  this.ExpectOnce = RBS_BTS_ExpectOnce
+  this.ExpectNone = RBS_BTS_ExpectNone
+  this.Expect = RBS_BTS_Expect
+  this.ExpectOnceOrNone = RBS_BTS_ExpectOnceOrNone
+  this.MockCallback0 = RBS_BTS_MockCallback0
+  this.MockCallback1 = RBS_BTS_MockCallback1
+  this.MockCallback2 = RBS_BTS_MockCallback2
+  this.MockCallback3 = RBS_BTS_MockCallback3
+  this.MockCallback4 = RBS_BTS_MockCallback4
+  this.MockCallback5 = RBS_BTS_MockCallback5
+  this.StubCallback0 = RBS_BTS_StubCallback0
+  this.StubCallback1 = RBS_BTS_StubCallback1
+  this.StubCallback2 = RBS_BTS_StubCallback2
+  this.StubCallback3 = RBS_BTS_StubCallback3
+  this.StubCallback4 = RBS_BTS_StubCallback4
+  this.StubCallback5 = RBS_BTS_StubCallback5
   this.pathAsArray_ = RBS_BTS_rodash_pathsAsArray_
   this.g = RBS_BTS_rodash_get_
   return this
 end function
-sub RBS_BTS_AddTest(name, func,funcName, setup = invalid, teardown = invalid)
+sub RBS_BTS_AddTest(name, func, funcName, setup = invalid, teardown = invalid)
   m.testCases.Push(m.createTest(name, func, setup, teardown))
 end sub
-function RBS_BTS_CreateTest(name, func, funcName, setup = invalid, teardown = invalid ) as object
+function RBS_BTS_CreateTest(name, func, funcName, setup = invalid, teardown = invalid) as object
   if (func = invalid)
     ? " ASKED TO CREATE TEST WITH INVALID FUNCITON POINTER FOR FUNCTION " ; funcName
   end if
@@ -137,7 +137,7 @@ function RBS_BTS_CreateTest(name, func, funcName, setup = invalid, teardown = in
     TearDown: teardown
   }
 end function
-function RBS_BTS_Fail(msg = "Error" ) as dynamic
+function RBS_BTS_Fail(msg = "Error") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   m.currentResult.AddResult(msg)
   return m.GetLegacyCompatibleReturnValue(false)
@@ -157,7 +157,7 @@ function RBS_BTS_GetLegacyCompatibleReturnValue(value) as object
     end if
   end if
 end function
-function RBS_BTS_AssertFalse(expr , msg = "Expression evaluates to true" ) as dynamic
+function RBS_BTS_AssertFalse(expr , msg = "Expression evaluates to true") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if not RBS_CMN_IsBoolean(expr) or expr
     m.currentResult.AddResult(msg)
@@ -166,7 +166,7 @@ function RBS_BTS_AssertFalse(expr , msg = "Expression evaluates to true" ) as dy
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertTrue(expr , msg = "Expression evaluates to false" ) as dynamic
+function RBS_BTS_AssertTrue(expr , msg = "Expression evaluates to false") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if not RBS_CMN_IsBoolean(expr) or not expr then
     m.currentResult.AddResult(msg)
@@ -175,7 +175,7 @@ function RBS_BTS_AssertTrue(expr , msg = "Expression evaluates to false" ) as dy
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertEqual(first , second , msg = "" ) as dynamic
+function RBS_BTS_AssertEqual(first , second , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if not m.eqValues(first, second)
     if msg = ""
@@ -189,7 +189,7 @@ function RBS_BTS_AssertEqual(first , second , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertLike(first , second , msg = "" ) as dynamic
+function RBS_BTS_AssertLike(first , second , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if first <> second
     if msg = ""
@@ -203,7 +203,7 @@ function RBS_BTS_AssertLike(first , second , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNotEqual(first , second , msg = "" ) as dynamic
+function RBS_BTS_AssertNotEqual(first , second , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if m.eqValues(first, second)
     if msg = ""
@@ -217,7 +217,7 @@ function RBS_BTS_AssertNotEqual(first , second , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertInvalid(value , msg = "" ) as dynamic
+function RBS_BTS_AssertInvalid(value , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if value <> invalid
     if msg = ""
@@ -230,7 +230,7 @@ function RBS_BTS_AssertInvalid(value , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNotInvalid(value , msg = "" ) as dynamic
+function RBS_BTS_AssertNotInvalid(value , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if value = invalid
     if msg = ""
@@ -243,7 +243,7 @@ function RBS_BTS_AssertNotInvalid(value , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertAAHasKey(array , key , msg = "" ) as dynamic
+function RBS_BTS_AssertAAHasKey(array , key , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if RBS_CMN_IsAssociativeArray(array)
     if not array.DoesExist(key)
@@ -261,7 +261,7 @@ function RBS_BTS_AssertAAHasKey(array , key , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertAANotHasKey(array , key , msg = "" ) as dynamic
+function RBS_BTS_AssertAANotHasKey(array , key , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if RBS_CMN_IsAssociativeArray(array)
     if array.DoesExist(key)
@@ -279,7 +279,7 @@ function RBS_BTS_AssertAANotHasKey(array , key , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertAAHasKeys(array , keys , msg = "" ) as dynamic
+function RBS_BTS_AssertAAHasKeys(array , keys , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if RBS_CMN_IsAssociativeArray(array) and RBS_CMN_IsArray(keys)
     for each key in keys
@@ -299,7 +299,7 @@ function RBS_BTS_AssertAAHasKeys(array , keys , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertAANotHasKeys(array , keys , msg = "" ) as dynamic
+function RBS_BTS_AssertAANotHasKeys(array , keys , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if RBS_CMN_IsAssociativeArray(array) and RBS_CMN_IsArray(keys)
     for each key in keys
@@ -319,7 +319,7 @@ function RBS_BTS_AssertAANotHasKeys(array , keys , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertArrayContains(array , value , key = invalid , msg = "" ) as dynamic
+function RBS_BTS_AssertArrayContains(array , value , key = invalid , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if RBS_CMN_IsAssociativeArray(array) or RBS_CMN_IsArray(array)
     if not RBS_CMN_ArrayContains(array, value, key)
@@ -335,7 +335,7 @@ function RBS_BTS_AssertArrayContains(array , value , key = invalid , msg = "" ) 
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertArrayContainsAAs(array , values , msg = "" ) as dynamic
+function RBS_BTS_AssertArrayContainsAAs(array , values , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if not RBS_CMN_IsArray(values)
     msg = "values to search for are not an Array."
@@ -346,7 +346,7 @@ function RBS_BTS_AssertArrayContainsAAs(array , values , msg = "" ) as dynamic
     for each value in values
       isMatched = false
       if not RBS_CMN_IsAssociativeArray(value)
-        msg = "Value to search for was not associativeArray "+  RBS_CMN_AsString(value)
+        msg = "Value to search for was not associativeArray " + RBS_CMN_AsString(value)
         m.currentResult.AddResult(msg)
         return m.GetLegacyCompatibleReturnValue(false)
       end if
@@ -368,7 +368,7 @@ function RBS_BTS_AssertArrayContainsAAs(array , values , msg = "" ) as dynamic
         end if
       end for ' items in array
       if not isMatched
-        msg = "array missing value: "+  RBS_CMN_AsString(value)
+        msg = "array missing value: " + RBS_CMN_AsString(value)
         m.currentResult.AddResult(msg)
         return m.GetLegacyCompatibleReturnValue(false)
       end if
@@ -381,7 +381,7 @@ function RBS_BTS_AssertArrayContainsAAs(array , values , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertArrayNotContains(array , value , key = invalid , msg = "" ) as dynamic
+function RBS_BTS_AssertArrayNotContains(array , value , key = invalid , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if RBS_CMN_IsAssociativeArray(array) or RBS_CMN_IsArray(array)
     if RBS_CMN_ArrayContains(array, value, key)
@@ -397,7 +397,7 @@ function RBS_BTS_AssertArrayNotContains(array , value , key = invalid , msg = ""
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertArrayContainsSubset(array , subset , msg = "" ) as dynamic
+function RBS_BTS_AssertArrayContainsSubset(array , subset , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if (RBS_CMN_IsAssociativeArray(array) and RBS_CMN_IsAssociativeArray(subset)) or (RBS_CMN_IsArray(array) and RBS_CMN_IsArray(subset))
     isAA = RBS_CMN_IsAssociativeArray(subset)
@@ -422,7 +422,7 @@ function RBS_BTS_AssertArrayContainsSubset(array , subset , msg = "" ) as dynami
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertArrayNotContainsSubset(array , subset , msg = "" ) as dynamic
+function RBS_BTS_AssertArrayNotContainsSubset(array , subset , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if (RBS_CMN_IsAssociativeArray(array) and RBS_CMN_IsAssociativeArray(subset)) or (RBS_CMN_IsArray(array) and RBS_CMN_IsArray(subset))
     isAA = RBS_CMN_IsAssociativeArray(subset)
@@ -447,7 +447,7 @@ function RBS_BTS_AssertArrayNotContainsSubset(array , subset , msg = "" ) as dyn
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertArrayCount(array , count , msg = "" ) as dynamic
+function RBS_BTS_AssertArrayCount(array , count , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if RBS_CMN_IsAssociativeArray(array) or RBS_CMN_IsArray(array)
     if array.Count() <> count
@@ -463,7 +463,7 @@ function RBS_BTS_AssertArrayCount(array , count , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertArrayNotCount(array , count , msg = "" ) as dynamic
+function RBS_BTS_AssertArrayNotCount(array , count , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if RBS_CMN_IsAssociativeArray(array) or RBS_CMN_IsArray(array)
     if array.Count() = count
@@ -479,7 +479,7 @@ function RBS_BTS_AssertArrayNotCount(array , count , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertEmpty(item , msg = "" ) as dynamic
+function RBS_BTS_AssertEmpty(item , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if RBS_CMN_IsAssociativeArray(item) or RBS_CMN_IsArray(item)
     if item.Count() > 0
@@ -501,7 +501,7 @@ function RBS_BTS_AssertEmpty(item , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNotEmpty(item , msg = "" ) as dynamic
+function RBS_BTS_AssertNotEmpty(item , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if RBS_CMN_IsAssociativeArray(item) or RBS_CMN_IsArray(item)
     if item.Count() = 0
@@ -523,7 +523,7 @@ function RBS_BTS_AssertNotEmpty(item , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertArrayContainsOnlyValuesOfType(array , typeStr , msg = "" ) as dynamic
+function RBS_BTS_AssertArrayContainsOnlyValuesOfType(array , typeStr , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if typeStr <> "String" and typeStr <> "Integer" and typeStr <> "Boolean" and typeStr <> "Array" and typeStr <> "AssociativeArray"
     msg = "Type must be Boolean, String, Array, Integer, or AssociativeArray"
@@ -589,7 +589,7 @@ function RBS_CMN_GetIsTypeFunction(name)
     return invalid
   end if
 end function
-function RBS_BTS_AssertType(value , typeStr , msg ="" ) as dynamic
+function RBS_BTS_AssertType(value , typeStr , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if type(value) <> typeStr
     if msg = ""
@@ -602,7 +602,7 @@ function RBS_BTS_AssertType(value , typeStr , msg ="" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertSubType(value , typeStr , msg ="" ) as dynamic
+function RBS_BTS_AssertSubType(value , typeStr , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if type(value) <> "roSGNode"
     if msg = ""
@@ -614,7 +614,7 @@ function RBS_BTS_AssertSubType(value , typeStr , msg ="" ) as dynamic
   else if (value.subType() <> typeStr)
     if msg = ""
       expr_as_string = RBS_CMN_AsString(value)
-      msg = expr_as_string + "( type : " + value.subType() +") was not of subType " + typeStr
+      msg = expr_as_string + "( type : " + value.subType() + ") was not of subType " + typeStr
     end if
     m.currentResult.AddResult(msg)
     return m.GetLegacyCompatibleReturnValue(false)
@@ -622,7 +622,7 @@ function RBS_BTS_AssertSubType(value , typeStr , msg ="" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_EqValues(Value1 , Value2 ) as dynamic
+function RBS_BTS_EqValues(Value1 , Value2) as dynamic
   val1Type = type(Value1)
   val2Type = type(Value2)
   if val1Type = "<uninitialized>" or val2Type = "<uninitialized>" or val1Type = "" or val2Type = ""
@@ -667,7 +667,7 @@ function RBS_BTS_EqValues(Value1 , Value2 ) as dynamic
     end if
   end if
 end function
-function RBS_BTS_EqAssocArray(Value1 , Value2 ) as dynamic
+function RBS_BTS_EqAssocArray(Value1 , Value2) as dynamic
   l1 = Value1.Count()
   l2 = Value2.Count()
   if not l1 = l2
@@ -689,7 +689,7 @@ function RBS_BTS_EqAssocArray(Value1 , Value2 ) as dynamic
     return true
   end if
 end function
-function RBS_BTS_EqArray(Value1 , Value2 ) as dynamic
+function RBS_BTS_EqArray(Value1 , Value2) as dynamic
   if not (RBS_CMN_IsArray(Value1)) or not RBS_CMN_IsArray(Value2) then return false
   l1 = Value1.Count()
   l2 = Value2.Count()
@@ -706,7 +706,7 @@ function RBS_BTS_EqArray(Value1 , Value2 ) as dynamic
     return true
   end if
 end function
-function RBS_BTS_AssertNodeCount(node , count , msg = "" ) as dynamic
+function RBS_BTS_AssertNodeCount(node , count , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if type(node) = "roSGNode"
     if node.getChildCount() <> count
@@ -722,7 +722,7 @@ function RBS_BTS_AssertNodeCount(node , count , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNodeNotCount(node , count , msg = "" ) as dynamic
+function RBS_BTS_AssertNodeNotCount(node , count , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if type(node) = "roSGNode"
     if node.getChildCount() = count
@@ -738,7 +738,7 @@ function RBS_BTS_AssertNodeNotCount(node , count , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNodeEmpty(node , msg = "" ) as dynamic
+function RBS_BTS_AssertNodeEmpty(node , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if type(node) = "roSGNode"
     if node.getChildCount() > 0
@@ -750,7 +750,7 @@ function RBS_BTS_AssertNodeEmpty(node , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNodeNotEmpty(node , msg = "" ) as dynamic
+function RBS_BTS_AssertNodeNotEmpty(node , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if type(node) = "roSGNode"
     if node.Count() = 0
@@ -762,9 +762,9 @@ function RBS_BTS_AssertNodeNotEmpty(node , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNodeContains(node , value , msg = "" ) as dynamic
+function RBS_BTS_AssertNodeContains(node , value , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
-  if  type(node) = "roSGNode"
+  if type(node) = "roSGNode"
     if not RBS_CMN_NodeContains(node, value)
       msg = "Node doesn't have the '" + RBS_CMN_AsString(value) + "' value."
       m.currentResult.AddResult(msg)
@@ -778,9 +778,9 @@ function RBS_BTS_AssertNodeContains(node , value , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNodeContainsOnly(node , msg = "" ) as dynamic
+function RBS_BTS_AssertNodeContainsOnly(node , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
-  if  type(node) = "roSGNode"
+  if type(node) = "roSGNode"
     if not RBS_CMN_NodeContains(node, value)
       msg = "Node doesn't have the '" + RBS_CMN_AsString(value) + "' value."
       m.currentResult.AddResult(msg)
@@ -798,9 +798,9 @@ function RBS_BTS_AssertNodeContainsOnly(node , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNodeNotContains(node , value , msg = "" ) as dynamic
+function RBS_BTS_AssertNodeNotContains(node , value , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
-  if  type(node) = "roSGNode"
+  if type(node) = "roSGNode"
     if RBS_CMN_NodeContains(node, value)
       msg = "Node has the '" + RBS_CMN_AsString(value) + "' value."
       m.currentResult.AddResult(msg)
@@ -814,9 +814,9 @@ function RBS_BTS_AssertNodeNotContains(node , value , msg = "" ) as dynamic
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNodeContainsFields(node , subset , ignoredFields=invalid, msg = "" ) as dynamic
+function RBS_BTS_AssertNodeContainsFields(node , subset , ignoredFields = invalid, msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
-  if ( type(node) = "roSGNode" and RBS_CMN_IsAssociativeArray(subset)) or ( type(node) = "roSGNode"  and RBS_CMN_IsArray(subset))
+  if (type(node) = "roSGNode" and RBS_CMN_IsAssociativeArray(subset)) or (type(node) = "roSGNode" and RBS_CMN_IsArray(subset))
     isAA = RBS_CMN_IsAssociativeArray(subset)
     isIgnoredFields = RBS_CMN_IsArray(ignoredFields)
     for each key in subset
@@ -842,9 +842,9 @@ function RBS_BTS_AssertNodeContainsFields(node , subset , ignoredFields=invalid,
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertNodeNotContainsFields(node , subset , msg = "" ) as dynamic
+function RBS_BTS_AssertNodeNotContainsFields(node , subset , msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
-  if ( type(node) = "roSGNode"  and RBS_CMN_IsAssociativeArray(subset)) or ( type(node) = "roSGNode" and RBS_CMN_IsArray(subset))
+  if (type(node) = "roSGNode" and RBS_CMN_IsAssociativeArray(subset)) or (type(node) = "roSGNode" and RBS_CMN_IsArray(subset))
     isAA = RBS_CMN_IsAssociativeArray(subset)
     for each item in subset
       key = invalid
@@ -867,7 +867,7 @@ function RBS_BTS_AssertNodeNotContainsFields(node , subset , msg = "" ) as dynam
   m.currentResult.AddResult("")
   return m.GetLegacyCompatibleReturnValue(true)
 end function
-function RBS_BTS_AssertAAContainsSubset(array , subset , ignoredFields = invalid, msg = "" ) as dynamic
+function RBS_BTS_AssertAAContainsSubset(array , subset , ignoredFields = invalid, msg = "") as dynamic
   if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
   if (RBS_CMN_IsAssociativeArray(array) and RBS_CMN_IsAssociativeArray(subset))
     isAA = RBS_CMN_IsAssociativeArray(subset)
@@ -899,7 +899,7 @@ function RBS_BTS_Stub(target, methodName, returnValue = invalid, allowNonExistin
     m.Fail("could not create Stub provided target was null")
     return {}
   end if
-  if (m.stubs =invalid)
+  if (m.stubs = invalid)
     m.__stubId = -1
     m.stubs = {}
   end if
@@ -968,7 +968,7 @@ function RBS_BTS_Mock(target, methodName, expectedInvocations = 1, expectedArgs 
   end if
   for i = 0 to m.__mockId
     id = stri(i).trim()
-    mock =  m.mocks[id]
+    mock = m.mocks[id]
     if mock <> invalid and mock.methodName = methodName and mock.target.__rooibosTargetId = target.__rooibosTargetId
       fake = mock
       exit for
@@ -987,7 +987,7 @@ function RBS_BTS_Mock(target, methodName, expectedInvocations = 1, expectedArgs 
     allowNonExisting = m.allowNonExistingMethodsOnMocks = true or allowNonExistingMethods
     isMethodPresent = type(target[methodName]) = "Function" or type(target[methodName]) = "roFunction"
     if (isMethodPresent or allowNonExisting)
-      target[methodName] =  m["MockCallback" + id]
+      target[methodName] = m["MockCallback" + id]
       target.__mocks = m.mocks
       if (not isMethodPresent)
         ? "WARNING - mocking call " ; methodName; " which did not exist on target object"
@@ -1000,7 +1000,7 @@ function RBS_BTS_Mock(target, methodName, expectedInvocations = 1, expectedArgs 
   end if
   return fake
 end function
-function RBS_BTS_CreateFake(id, target, methodName, expectedInvocations = 1, expectedArgs =invalid, returnValue=invalid ) as object
+function RBS_BTS_CreateFake(id, target, methodName, expectedInvocations = 1, expectedArgs = invalid, returnValue = invalid) as object
   expectedArgsValues = []
   hasArgs = RBS_CMN_IsArray(expectedArgs)
   if (hasArgs)
@@ -1031,20 +1031,20 @@ function RBS_BTS_CreateFake(id, target, methodName, expectedInvocations = 1, exp
     invokedArgs: [invalid, invalid, invalid, invalid, invalid, invalid, invalid, invalid, invalid],
     expectedArgs: expectedArgsValues,
     expectedInvocations: expectedInvocations,
-    callback: function (arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    callback: function(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       if (m.allInvokedArgs = invalid)
         m.allInvokedArgs = []
       end if
-      m.invokedArgs = [arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 ]
-      m.allInvokedArgs.push ([arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 ])
+      m.invokedArgs = [arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9]
+      m.allInvokedArgs.push ([arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9])
       m.isCalled = true
       m.invocations++
       if (type(m.returnValue) = "roAssociativeArray" and m.returnValue.doesExist("multiResult"))
         returnValues = m.returnValue["multiResult"]
-        returnIndex = m.invocations -1
+        returnIndex = m.invocations - 1
         if (type(returnValues) = "roArray" and returnValues.count() > 0)
           if returnValues.count() <= m.invocations
-            returnIndex = returnValues.count() -1
+            returnIndex = returnValues.count() - 1
             print "Multi return values all used up - repeating last value"
           end if
           return returnValues[returnIndex]
@@ -1097,7 +1097,7 @@ function RBS_BTS_AssertMocks() as void
         else
           expectedArgs = mock.expectedArgs
         end if
-        for i = 0 to expectedArgs.count() -1
+        for i = 0 to expectedArgs.count() - 1
           value = invokedArgs[i]
           expected = expectedArgs[i]
           didNotExpectArg = RBS_CMN_IsString(expected) and expected = m.invalidValue
@@ -1136,54 +1136,54 @@ function RBS_BTS_CleanMocks() as void
     end function
     function RBS_BTS_MockFail(methodName, message) as dynamic
       if (m.currentResult.isFail) then return m.GetLegacyCompatibleReturnValue(false) ' skip test we already failed
-      m.currentResult.AddResult("mock failure on '" + methodName + "' : "  + message)
+      m.currentResult.AddResult("mock failure on '" + methodName + "' : " + message)
       return m.GetLegacyCompatibleReturnValue(false)
     end function
-    function RBS_BTS_StubCallback0(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_StubCallback0(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__Stubs["0"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_StubCallback1(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_StubCallback1(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__Stubs["1"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_StubCallback2(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_StubCallback2(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__Stubs["2"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_StubCallback3(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_StubCallback3(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__Stubs["3"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_StubCallback4(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_StubCallback4(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__Stubs["4"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_StubCallback5(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_StubCallback5(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__Stubs["5"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_MockCallback0(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_MockCallback0(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__mocks["0"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_MockCallback1(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_MockCallback1(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__mocks["1"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_MockCallback2(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_MockCallback2(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__mocks["2"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_MockCallback3(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_MockCallback3(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__mocks["3"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_MockCallback4(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_MockCallback4(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__mocks["4"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
-    function RBS_BTS_MockCallback5(arg1=invalid,  arg2=invalid,  arg3=invalid,  arg4=invalid,  arg5=invalid,  arg6=invalid,  arg7=invalid,  arg8=invalid,  arg9 =invalid)as dynamic
+    function RBS_BTS_MockCallback5(arg1 = invalid, arg2 = invalid, arg3 = invalid, arg4 = invalid, arg5 = invalid, arg6 = invalid, arg7 = invalid, arg8 = invalid, arg9 = invalid)as dynamic
       fake = m.__mocks["5"]
       return fake.callback(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     end function
@@ -1211,7 +1211,7 @@ function RBS_BTS_CleanMocks() as void
       end if
       return segments
     end function
-    function RBS_BTS_rodash_get_(aa, path, default=invalid)
+    function RBS_BTS_rodash_get_(aa, path, default = invalid)
       if type(aa) <> "roAssociativeArray" and type(aa) <> "roArray" and type(aa) <> "roSGNode" then return default
       segments = m.pathAsArray_(path)
       if (Type(path) = "roInt" or Type(path) = "roInteger" or Type(path) = "Integer")
@@ -1253,10 +1253,10 @@ function RBS_BTS_CleanMocks() as void
       if result = invalid then return default
       return result
     end function
-function RBS_CMN_IsXmlElement(value ) as boolean
+function RBS_CMN_IsXmlElement(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifXMLElement") <> invalid
 end function
-function RBS_CMN_IsFunction(value ) as boolean
+function RBS_CMN_IsFunction(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifFunction") <> invalid
 end function
 function RBS_CMN_GetFunction(filename, functionName) as object
@@ -1265,7 +1265,7 @@ function RBS_CMN_GetFunction(filename, functionName) as object
   mapFunction = RBSFM_getFunctionsForFile(filename)
   if mapFunction <> invalid
     map = mapFunction()
-    if (type(map) ="roAssociativeArray")
+    if (type(map) = "roAssociativeArray")
       functionPointer = map[functionName]
       return functionPointer
     else
@@ -1282,7 +1282,7 @@ function RBS_CMN_GetFunctionBruteForce(functionName) as object
     mapFunction = RBSFM_getFunctionsForFile(filename)
     if mapFunction <> invalid
       map = mapFunction()
-      if (type(map) ="roAssociativeArray")
+      if (type(map) = "roAssociativeArray")
         functionPointer = map[functionName]
         if functionPointer <> invalid
           return functionPointer
@@ -1292,59 +1292,59 @@ function RBS_CMN_GetFunctionBruteForce(functionName) as object
   end for
   return invalid
 end function
-function RBS_CMN_IsBoolean(value ) as boolean
+function RBS_CMN_IsBoolean(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifBoolean") <> invalid
 end function
-function RBS_CMN_IsInteger(value ) as boolean
+function RBS_CMN_IsInteger(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifInt") <> invalid and (Type(value) = "roInt" or Type(value) = "roInteger" or Type(value) = "Integer")
 end function
-function RBS_CMN_IsFloat(value ) as boolean
+function RBS_CMN_IsFloat(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifFloat") <> invalid
 end function
-function RBS_CMN_IsDouble(value ) as boolean
+function RBS_CMN_IsDouble(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifDouble") <> invalid
 end function
-function RBS_CMN_IsLongInteger(value ) as boolean
+function RBS_CMN_IsLongInteger(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifLongInt") <> invalid
 end function
-function RBS_CMN_IsNumber(value ) as boolean
+function RBS_CMN_IsNumber(value) as boolean
   return RBS_CMN_IsLongInteger(value) or RBS_CMN_IsDouble(value) or RBS_CMN_IsInteger(value) or RBS_CMN_IsFloat(value)
 end function
-function RBS_CMN_IsList(value ) as boolean
+function RBS_CMN_IsList(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifList") <> invalid
 end function
-function RBS_CMN_IsArray(value ) as boolean
+function RBS_CMN_IsArray(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifArray") <> invalid
 end function
-function RBS_CMN_IsAssociativeArray(value ) as boolean
+function RBS_CMN_IsAssociativeArray(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifAssociativeArray") <> invalid
 end function
-function RBS_CMN_IsSGNode(value ) as boolean
+function RBS_CMN_IsSGNode(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifSGNodeChildren") <> invalid
 end function
-function RBS_CMN_IsString(value ) as boolean
+function RBS_CMN_IsString(value) as boolean
   return RBS_CMN_IsValid(value) and GetInterface(value, "ifString") <> invalid
 end function
-function RBS_CMN_IsNotEmptyString(value ) as boolean
+function RBS_CMN_IsNotEmptyString(value) as boolean
   return RBS_CMN_IsString(value) and len(value) > 0
 end function
-function RBS_CMN_IsDateTime(value ) as boolean
+function RBS_CMN_IsDateTime(value) as boolean
   return RBS_CMN_IsValid(value) and (GetInterface(value, "ifDateTime") <> invalid or Type(value) = "roDateTime")
 end function
-function RBS_CMN_IsValid(value ) as boolean
+function RBS_CMN_IsValid(value) as boolean
   return not RBS_CMN_IsUndefined(value) and value <> invalid
 end function
-function RBS_CMN_IsUndefined(value ) as boolean
+function RBS_CMN_IsUndefined(value) as boolean
   return type(value) = "" or Type(value) = "<uninitialized>"
 end function
-function RBS_CMN_ValidStr(obj ) as string
+function RBS_CMN_ValidStr(obj) as string
   if obj <> invalid and GetInterface(obj, "ifString") <> invalid
     return obj
   else
     return ""
   end if
 end function
-function RBS_CMN_AsString(input ) as string
+function RBS_CMN_AsString(input) as string
   if RBS_CMN_IsValid(input) = false
     return ""
   else if RBS_CMN_IsString(input)
@@ -1354,7 +1354,7 @@ function RBS_CMN_AsString(input ) as string
   else if RBS_CMN_IsFloat(input) or RBS_CMN_IsDouble(input)
     return Str(input).Trim()
   else if type(input) = "roSGNode"
-    return "Node(" + input.subType() +")"
+    return "Node(" + input.subType() + ")"
   else if type(input) = "roAssociativeArray"
     isFirst = true
     text = "{"
@@ -1373,7 +1373,7 @@ function RBS_CMN_AsString(input ) as string
     return ""
   end if
 end function
-function RBS_CMN_AsInteger(input ) as integer
+function RBS_CMN_AsInteger(input) as integer
   if RBS_CMN_IsValid(input) = false
     return 0
   else if RBS_CMN_IsString(input)
@@ -1386,7 +1386,7 @@ function RBS_CMN_AsInteger(input ) as integer
     return 0
   end if
 end function
-function RBS_CMN_AsLongInteger(input ) as longinteger
+function RBS_CMN_AsLongInteger(input) as longinteger
   if RBS_CMN_IsValid(input) = false
     return 0
   else if RBS_CMN_IsString(input)
@@ -1397,7 +1397,7 @@ function RBS_CMN_AsLongInteger(input ) as longinteger
     return 0
   end if
 end function
-function RBS_CMN_AsFloat(input ) as float
+function RBS_CMN_AsFloat(input) as float
   if RBS_CMN_IsValid(input) = false
     return 0.0
   else if RBS_CMN_IsString(input)
@@ -1410,7 +1410,7 @@ function RBS_CMN_AsFloat(input ) as float
     return 0.0
   end if
 end function
-function RBS_CMN_AsDouble(input ) as double
+function RBS_CMN_AsDouble(input) as double
   if RBS_CMN_IsValid(input) = false
     return 0.0
   else if RBS_CMN_IsString(input)
@@ -1421,7 +1421,7 @@ function RBS_CMN_AsDouble(input ) as double
     return 0.0
   end if
 end function
-function RBS_CMN_AsBoolean(input ) as boolean
+function RBS_CMN_AsBoolean(input) as boolean
   if RBS_CMN_IsValid(input) = false
     return false
   else if RBS_CMN_IsString(input)
@@ -1434,7 +1434,7 @@ function RBS_CMN_AsBoolean(input ) as boolean
     return false
   end if
 end function
-function RBS_CMN_AsArray(value ) as object
+function RBS_CMN_AsArray(value) as object
   if RBS_CMN_IsValid(value)
     if not RBS_CMN_IsArray(value)
       return [value]
@@ -1444,14 +1444,14 @@ function RBS_CMN_AsArray(value ) as object
   end if
   return []
 end function
-function RBS_CMN_IsNullOrEmpty(value ) as boolean
+function RBS_CMN_IsNullOrEmpty(value) as boolean
   if RBS_CMN_IsString(value)
     return Len(value) = 0
   else
     return not RBS_CMN_IsValid(value)
   end if
 end function
-function RBS_CMN_FindElementIndexInArray(array , value , compareAttribute = invalid , caseSensitive = false ) as integer
+function RBS_CMN_FindElementIndexInArray(array , value , compareAttribute = invalid , caseSensitive = false) as integer
   if RBS_CMN_IsArray(array)
     for i = 0 to RBS_CMN_AsArray(array).Count() - 1
       compareValue = array[i]
@@ -1466,10 +1466,10 @@ function RBS_CMN_FindElementIndexInArray(array , value , compareAttribute = inva
   end if
   return -1
 end function
-function RBS_CMN_ArrayContains(array , value , compareAttribute = invalid ) as boolean
+function RBS_CMN_ArrayContains(array , value , compareAttribute = invalid) as boolean
   return (RBS_CMN_FindElementIndexInArray(array, value, compareAttribute) > -1)
 end function
-function RBS_CMN_FindElementIndexInNode(node , value ) as integer
+function RBS_CMN_FindElementIndexInNode(node , value) as integer
   if type(node) = "roSGNode"
     for i = 0 to node.getChildCount() - 1
       compareValue = node.getChild(i)
@@ -1480,7 +1480,7 @@ function RBS_CMN_FindElementIndexInNode(node , value ) as integer
   end if
   return -1
 end function
-function RBS_CMN_NodeContains(node , value ) as boolean
+function RBS_CMN_NodeContains(node , value) as boolean
   return (RBS_CMN_FindElementIndexInNode(node, value) > -1)
 end function
 function RBS_ItG_GetTestCases(group) as object
@@ -1508,21 +1508,21 @@ function RBS_ItG_GetRunnableTestSuite(group) as object
     group.testCaseLookup[name] = testCase
   end for
   runnableSuite.SetUp = RBS_CMN_GetFunction(group.filename, group.setupFunctionName)
-  runnableSuite.TearDown =  RBS_CMN_GetFunction(group.filename, group.teardownFunctionName)
-  runnableSuite.BeforeEach =  RBS_CMN_GetFunction(group.filename, group.beforeEachFunctionName)
-  runnableSuite.AfterEach =  RBS_CMN_GetFunction(group.filename, group.afterEachFunctionName)
+  runnableSuite.TearDown = RBS_CMN_GetFunction(group.filename, group.teardownFunctionName)
+  runnableSuite.BeforeEach = RBS_CMN_GetFunction(group.filename, group.beforeEachFunctionName)
+  runnableSuite.AfterEach = RBS_CMN_GetFunction(group.filename, group.afterEachFunctionName)
   return runnableSuite
 end function
 function ItemGenerator(scheme as object) as object
   this = {}
-  this.getItem    = RBS_IG_GetItem
-  this.getAssocArray  = RBS_IG_GetAssocArray
-  this.getArray     = RBS_IG_GetArray
-  this.getSimpleType  = RBS_IG_GetSimpleType
-  this.getInteger   = RBS_IG_GetInteger
-  this.getFloat     = RBS_IG_GetFloat
-  this.getString    = RBS_IG_GetString
-  this.getBoolean   = RBS_IG_GetBoolean
+  this.getItem = RBS_IG_GetItem
+  this.getAssocArray = RBS_IG_GetAssocArray
+  this.getArray = RBS_IG_GetArray
+  this.getSimpleType = RBS_IG_GetSimpleType
+  this.getInteger = RBS_IG_GetInteger
+  this.getFloat = RBS_IG_GetFloat
+  this.getString = RBS_IG_GetString
+  this.getBoolean = RBS_IG_GetBoolean
   if not RBS_CMN_IsValid(scheme)
     return invalid
   end if
@@ -1583,11 +1583,11 @@ function RBS_IG_GetString(seed as integer) as string
     stringLength = Rnd(seed)
     for i = 0 to stringLength
       chType = Rnd(3)
-      if chType = 1     'Chr(48-57) - numbers
+      if chType = 1 'Chr(48-57) - numbers
         chNumber = 47 + Rnd(10)
-      else if chType = 2  'Chr(65-90) - Uppercase Letters
+      else if chType = 2 'Chr(65-90) - Uppercase Letters
         chNumber = 64 + Rnd(26)
-      else        'Chr(97-122) - Lowercase Letters
+      else 'Chr(97-122) - Lowercase Letters
         chNumber = 96 + Rnd(26)
       end if
       item = item + Chr(chNumber)
@@ -1607,7 +1607,7 @@ end function
 function RBS_CreateSuites()
   suites = RBSFM_getTestSuitesForProject()
   includedSuites = []
-  for i = 0 to suites.count() -1
+  for i = 0 to suites.count() - 1
     suite = suites[i]
     if (suite.valid)
       if (suite.isSolo)
@@ -1628,13 +1628,13 @@ function RBS_CreateSuites()
 end function
 function RBS_STATS_CreateTotalStatistic() as object
   statTotalItem = {
-    Suites    : []
-    Time    : 0
-    Total     : 0
-    Correct   : 0
-    Fail    : 0
-    Ignored   : 0
-    Crash     : 0
+    Suites : []
+    Time : 0
+    Total : 0
+    Correct : 0
+    Fail : 0
+    Ignored : 0
+    Crash : 0
     IgnoredTestNames: []
   }
   return statTotalItem
@@ -1653,25 +1653,25 @@ function RBS_STATS_MergeTotalStatistic(stat1, stat2) as void
 end function
 function RBS_STATS_CreateSuiteStatistic(name as string) as object
   statSuiteItem = {
-    Name  : name
-    Tests   : []
-    Time  : 0
-    Total   : 0
+    Name : name
+    Tests : []
+    Time : 0
+    Total : 0
     Correct : 0
-    Fail  : 0
-    Crash   : 0
-    Ignored   : 0
-    IgnoredTestNames:[]
+    Fail : 0
+    Crash : 0
+    Ignored : 0
+    IgnoredTestNames: []
   }
   return statSuiteItem
 end function
 function RBS_STATS_CreateTestStatistic(name as string, result = "Success" as string, time = 0 as integer, errorCode = 0 as integer, errorMessage = "" as string) as object
   statTestItem = {
-    Name  : name
-    Result  : result
-    Time  : time
-    Error   : {
-      Code  : errorCode
+    Name : name
+    Result : result
+    Time : time
+    Error : {
+      Code : errorCode
       Message : errorMessage
     }
   }
@@ -1711,7 +1711,7 @@ sub RBS_STATS_AppendSuiteStatistic(statTotalObj as object, statSuiteObj as objec
     end if
   end if
 end sub
-function UnitTestCase(name as string, func as dynamic, funcName as string, isSolo as boolean, isIgnored as boolean, lineNumber as integer, params = invalid, paramTestIndex =0, paramLineNumber = 0)
+function UnitTestCase(name as string, func as dynamic, funcName as string, isSolo as boolean, isIgnored as boolean, lineNumber as integer, params = invalid, paramTestIndex = 0, paramLineNumber = 0)
   this = {}
   this.isSolo = isSolo
   this.func = func
@@ -1748,18 +1748,18 @@ function Logger(config) as object
   this = {}
   this.config = config
   this.verbosityLevel = {
-    basic   : 0
-    normal  : 1
+    basic : 0
+    normal : 1
     verbose : 2
   }
-  this.verbosity        = this.config.logLevel
-  this.PrintStatistic     = RBS_LOGGER_PrintStatistic
-  this.PrintMetaSuiteStart  = RBS_LOGGER_PrintMetaSuiteStart
-  this.PrintSuiteStatistic  = RBS_LOGGER_PrintSuiteStatistic
-  this.PrintTestStatistic   = RBS_LOGGER_PrintTestStatistic
-  this.PrintStart       = RBS_LOGGER_PrintStart
-  this.PrintEnd         = RBS_LOGGER_PrintEnd
-  this.PrintSuiteStart    = RBS_LOGGER_PrintSuiteStart
+  this.verbosity = this.config.logLevel
+  this.PrintStatistic = RBS_LOGGER_PrintStatistic
+  this.PrintMetaSuiteStart = RBS_LOGGER_PrintMetaSuiteStart
+  this.PrintSuiteStatistic = RBS_LOGGER_PrintSuiteStatistic
+  this.PrintTestStatistic = RBS_LOGGER_PrintTestStatistic
+  this.PrintStart = RBS_LOGGER_PrintStart
+  this.PrintEnd = RBS_LOGGER_PrintEnd
+  this.PrintSuiteStart = RBS_LOGGER_PrintSuiteStart
   return this
 end function
 sub RBS_LOGGER_PrintStatistic(statObj as object)
@@ -1807,7 +1807,7 @@ sub RBS_LOGGER_PrintTestStatistic(testCase as object)
   if (LCase(testCase.Result) <> "success")
     testChar = "-"
     assertIndex = metaTestCase.testResult.failedAssertIndex
-    locationLine = StrI(RBS_TC_GetAssertLine(metaTestCase,assertIndex)).trim()
+    locationLine = StrI(RBS_TC_GetAssertLine(metaTestCase, assertIndex)).trim()
   else
     testChar = "|"
     locationLine = StrI(metaTestCase.lineNumber).trim()
@@ -1816,18 +1816,18 @@ sub RBS_LOGGER_PrintTestStatistic(testCase as object)
   insetText = ""
   if (metaTestcase.isParamTest <> true)
     messageLine = RBS_LOGGER_FillText(" " + testChar + " |--" + metaTestCase.Name + " : ", ".", 80)
-    ? messageLine ; testCase.Result ; " (" + stri(metaTestCase.time).trim() +"ms)"
-  else if ( metaTestcase.paramTestIndex = 0)
+    ? messageLine ; testCase.Result ; " (" + stri(metaTestCase.time).trim() + "ms)"
+  else if (metaTestcase.paramTestIndex = 0)
     name = metaTestCase.Name
     if (len(name) > 1 and right(name, 1) = "0")
       name = left(name, len(name) - 1)
     end if
-    ? " " + testChar + " |--" + name+ " : "
+    ? " " + testChar + " |--" + name + " : "
   end if
   if (metaTestcase.isParamTest = true)
     insetText = "  "
     messageLine = RBS_LOGGER_FillText(" " + testChar + insetText + " |--" + formatJson(metaTestCase.rawParams) + " : ", ".", 80)
-    ? messageLine ; testCase.Result ; " (" + stri(metaTestCase.time).trim() +"ms)"
+    ? messageLine ; testCase.Result ; " (" + stri(metaTestCase.time).trim() + "ms)"
   end if
   if LCase(testCase.Result) <> "success"
     ? " | "; insettext ;"  |--Location: "; locationText
@@ -1841,7 +1841,7 @@ function RBS_LOGGER_FillText(text as string, fillChar = " ", numChars = 40) as s
   if (len(text) >= numChars)
     text = left(text, numChars - 5) + "..." + fillChar + fillChar
   else
-    numToFill= numChars - len(text) -1
+    numToFill = numChars - len(text) - 1
     for i = 0 to numToFill
       text += fillChar
     end for
@@ -1931,6 +1931,7 @@ function RBS_TRes_GetResult() as string
   end if
 end function
 function RBS_TR_TestRunner(args = {}) as object
+  print "RBS_TR_TestRunner() args="; FormatJSON(args)
   this = {}
   this.testScene = args.testScene
   this.nodeContext = args.nodeContext
@@ -1953,7 +1954,7 @@ function RBS_TR_TestRunner(args = {}) as object
   this.config.testsDirectory = config.testsDirectory
   this.logger = Logger(this.config)
   this.global = args.global
-  this.Run          = RBS_TR_Run
+  this.Run = RBS_TR_Run
   return this
 end function
 sub RBS_TR_Run()
@@ -2160,11 +2161,11 @@ sub RBS_RT_RunTestCases(metaTestSuite, itGroup, testSuite, totalStatObj, config,
     end if
     runResult = testSuite.currentResult.GetResult()
     if runResult <> ""
-      testStatObj.Result      = "Fail"
-      testStatObj.Error.Code    = 1
-      testStatObj.Error.Message   = runResult
+      testStatObj.Result = "Fail"
+      testStatObj.Error.Code = 1
+      testStatObj.Error.Message = runResult
     else
-      testStatObj.Result      = "Success"
+      testStatObj.Result = "Success"
     end if
     testStatObj.Time = testTimer.TotalMilliseconds()
     RBS_STATS_AppendTestStatistic(suiteStatObj, testStatObj)
